@@ -29,12 +29,11 @@ describe "as an user" do
       expect(page).to have_content("#{@in_my_eyes.name}")
       expect(page).to have_content("#{@in_my_eyes.creation_year}")
       expect(page).to have_content("#{@in_my_eyes.genre}")
-
       expect(page).to have_content("#{@jim.name}")
       expect(page).to have_content("#{@jan.name}")
       expect(page).to have_content("#{@joan.name}")
 
-      expect(page).to have_content(33.7)
+      expect(page).to have_content(34)
 
     end
   end
