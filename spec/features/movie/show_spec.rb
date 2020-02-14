@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe "as an user" do
-  describe "at the actor show page" do
+  describe "at the movie show page" do
     before :each do
       @cbs = Studio.create(name: "CBS Studio")
       @nbc = Studio.create(name: "NBC Studio")
@@ -18,19 +18,24 @@ describe "as an user" do
       @jan = Actor.create!(name: "Jan Rogers", age: 29)
 
       MovieActor.create!(movie: @in_my_eyes, actor: @joan)
-      MovieActor.create!(movie: @dreamscape, actor: @joan)
-      MovieActor.create!(movie: @nightmare, actor: @joan)
+      MovieActor.create!(movie: @in_my_eyes, actor: @jan)
+      MovieActor.create!(movie: @in_my_eyes, actor: @jim)
 
     end
 
-    it "can see the actor's name, age, and a list of movies they've been in" do
-      visit "/actors/#{@joan.id}"
+    it "can see the actor's name, creation year, and genre. I also see a list its actors in order of age and their average age" do
+      visit "/movies/#{@in_my_eyes.id}"
 
-      expect(page).to have_content("#{@joan.name}")
-      expect(page).to have_content("#{@joan.age}")
       expect(page).to have_content("#{@in_my_eyes.name}")
-      expect(page).to have_content("#{@dreamscape.name}")
-      expect(page).to have_content("#{@nightmare.name}")
+      expect(page).to have_content("#{@in_my_eyes.creation_year}")
+      expect(page).to have_content("#{@in_my_eyes.genre}")
+
+      expect(page).to have_content("#{@jim.name}")
+      expect(page).to have_content("#{@jan.name}")
+      expect(page).to have_content("#{@joan.name}")
+
+      expect(page).to have_content(33.7)
+
     end
   end
 end
