@@ -20,6 +20,7 @@ describe "as an user" do
       MovieActor.create!(movie: @in_my_eyes, actor: @joan)
       MovieActor.create!(movie: @in_my_eyes, actor: @jan)
       MovieActor.create!(movie: @in_my_eyes, actor: @jim)
+      MovieActor.create!(movie: @dreamscape, actor: @jim)
 
     end
 
@@ -34,6 +35,11 @@ describe "as an user" do
       expect(page).to have_content("#{@joan.name}")
 
       expect(page).to have_content(34)
+    end
+
+    it "can fill in an actors name and be added to the movie credits" do
+
+
 
     end
   end
