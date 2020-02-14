@@ -22,9 +22,15 @@ describe "as an user" do
     it "shows a list of all the movie studios and it's movies" do
       visit "/studios"
 
-      expect(page).to have_content("Studio Index")
+      expect(page).to have_content("#{@cbs.name}")
+      expect(page).to have_content("#{@nbc.name}")
+      expect(page).to have_content("#{@fox.name}")
+      expect(page).to have_content("#{@indy.name}")
 
-
+      within "#studio-#{@cbs.id}" do
+        expect(page).to have_content("#{@cbs.name}")
+        expect(page).to have_content("#{@nightmare.name}")
+      end
 
     end
   end
